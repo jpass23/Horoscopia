@@ -25,13 +25,25 @@ struct ZodiacPickerView: View {
             }.pickerStyle(.menu)
             
             Spacer()
-            HStack{
-                DatePicker("Enter your birthday: ", selection: $birthday, displayedComponents: .date)
+//            HStack{
+//                DatePicker("Enter your birthday: ", selection: $birthday, displayedComponents: .date)
+//            }
+            NavigationLink{
+                MainTabView()
+            }label: {
+                buttonView
             }
             Spacer()
         }
         .padding()
         
+    }
+    
+    var buttonView: some View {
+        ZStack {
+            Rectangle().frame(width: 200, height: 80).cornerRadius(8)
+            Text("Continue").font(.title)
+        }
     }
 }
 

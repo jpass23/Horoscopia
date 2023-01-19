@@ -9,6 +9,7 @@ import SwiftUI
 enum Tab {
     case yesterday, today, tomorrow
 }
+
 struct MainTabView: View {
     @State var currentTab: Tab = Tab.today
     
@@ -36,7 +37,14 @@ struct MainTabView: View {
                             Text("Tomorrow")
                         }
                     }
-            }
+            }.navigationTitle("Hey")
+                .toolbar{
+                    NavigationLink{
+                        SavedView()
+                    }label: {
+                        Image(systemName: "bookmark.square")
+                    }
+                }
         }
     }
 }
