@@ -11,6 +11,9 @@
 		C0514BB22978FD7100795F8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0514BB12978FD7100795F8F /* ContentView.swift */; };
 		C0514BB42978FD7400795F8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0514BB32978FD7400795F8F /* Assets.xcassets */; };
 		C0514BB72978FD7400795F8F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0514BB62978FD7400795F8F /* Preview Assets.xcassets */; };
+		C0514BBE2978FF3800795F8F /* ZodiacPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0514BBD2978FF3800795F8F /* ZodiacPickerView.swift */; };
+		C0514BC0297908CC00795F8F /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0514BBF297908CC00795F8F /* MainTabView.swift */; };
+		C0514BC229790A2300795F8F /* HoroscopeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0514BC129790A2300795F8F /* HoroscopeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		C0514BB12978FD7100795F8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C0514BB32978FD7400795F8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0514BB62978FD7400795F8F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C0514BBD2978FF3800795F8F /* ZodiacPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacPickerView.swift; sourceTree = "<group>"; };
+		C0514BBF297908CC00795F8F /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		C0514BC129790A2300795F8F /* HoroscopeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,9 @@
 			children = (
 				C0514BAF2978FD7100795F8F /* HoroscopiaApp.swift */,
 				C0514BB12978FD7100795F8F /* ContentView.swift */,
+				C0514BBD2978FF3800795F8F /* ZodiacPickerView.swift */,
+				C0514BBF297908CC00795F8F /* MainTabView.swift */,
+				C0514BC129790A2300795F8F /* HoroscopeView.swift */,
 				C0514BB32978FD7400795F8F /* Assets.xcassets */,
 				C0514BB52978FD7400795F8F /* Preview Content */,
 			);
@@ -138,7 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0514BB22978FD7100795F8F /* ContentView.swift in Sources */,
+				C0514BC229790A2300795F8F /* HoroscopeView.swift in Sources */,
 				C0514BB02978FD7100795F8F /* HoroscopiaApp.swift in Sources */,
+				C0514BBE2978FF3800795F8F /* ZodiacPickerView.swift in Sources */,
+				C0514BC0297908CC00795F8F /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
