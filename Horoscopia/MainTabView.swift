@@ -11,7 +11,9 @@ enum Tab {
 }
 
 struct MainTabView: View {
+    @EnvironmentObject var model: Model
     @State var currentTab: Tab = Tab.today
+    @State var showAlert: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -37,20 +39,34 @@ struct MainTabView: View {
                             Text("Tomorrow")
                         }
                     }
-            }.navigationTitle("Hey")
-                .toolbar{
+            }.toolbar{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button{
+                        showAlert.toggle()
+                    }label:{
+                        Text(model.zodiac ?? "No zodiac").font(.largeTitle).fontWeight(.bold).foregroundColor(.black)
+                    }.alert("Switch Zodiac?", isPresented: $showAlert) {
+                        Button("Yes"){
+                            model.signOut()
+                            model.zodiac = nil
+                        }
+                        Button("Cancel", role: .cancel){}
+                    }
+                }
+                ToolbarItem {
                     NavigationLink{
                         SavedView()
                     }label: {
                         Image(systemName: "bookmark.square")
                     }
                 }
+            }
         }
     }
 }
 
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
-    }
-}
+//struct MainTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainTabView()
+//    }
+//}

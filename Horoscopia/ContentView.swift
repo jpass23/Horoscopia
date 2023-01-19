@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var model = Model()
+    
     var body: some View {
         NavigationStack {
-            ZodiacPickerView()
-        }
+            if model.signedIn {
+                MainTabView()
+            }else{
+                ZodiacPickerView()
+            }
+        }.environmentObject(model)
     }
 }
 

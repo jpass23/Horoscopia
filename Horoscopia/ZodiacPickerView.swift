@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ZodiacPickerView: View {
+    @EnvironmentObject var model: Model
     @State var zodiac = String()
     @State var birthday = Date()
-    let zodiacList = ["Ares","Taurus","Gemini","Cancer","Leo","Virgo", "Libra", "Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"]
+    @State var showAlert = false
+    
+    let zodiacList = ["No Zodiac", "Ares","Taurus","Gemini","Cancer","Leo","Virgo", "Libra", "Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"]
     var body: some View {
         VStack {
             Spacer()
@@ -28,10 +31,18 @@ struct ZodiacPickerView: View {
 //            HStack{
 //                DatePicker("Enter your birthday: ", selection: $birthday, displayedComponents: .date)
 //            }
-            NavigationLink{
-                MainTabView()
+            Button{
+                if model.zodiac == nil{
+                    showAlert.toggle()
+                }else{
+                    model.signIn()
+                }
             }label: {
                 buttonView
+            }.alert("Please choose a zodiac sign", isPresented: $showAlert) {
+                Button("Cancel", role: .cancel){}
+            }.onChange(of: zodiac) { newValue in
+                model.setZodoac(zodiac: zodiac)
             }
             Spacer()
         }
@@ -42,7 +53,7 @@ struct ZodiacPickerView: View {
     var buttonView: some View {
         ZStack {
             Rectangle().frame(width: 200, height: 80).cornerRadius(8)
-            Text("Continue").font(.title)
+            Text("Continue").font(.title).foregroundColor(.white)
         }
     }
 }
