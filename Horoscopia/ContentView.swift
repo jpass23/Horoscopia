@@ -11,15 +11,19 @@ struct ContentView: View {
     @StateObject var model = Model()
 
     var body: some View {
-        NavigationStack {
+        Group {
             if model.signedIn {
                 MainTabView()
             } else {
-                ZodiacPickerView()
+                NavigationStack{
+                    ZodiacPickerView()
+                }
             }
         }.environmentObject(model)
     }
 }
+
+// MARK: Extensions
 
 extension UIScreen {
     static let screenWidth = UIScreen.main.bounds.size.width

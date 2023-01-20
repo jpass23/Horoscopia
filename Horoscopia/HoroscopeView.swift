@@ -29,7 +29,13 @@ struct HoroscopeView: View {
                             Text(horoscope!.current_date).font(.title).fontWeight(.bold)
                             Spacer()
                             Button{
-                                saved.toggle()
+                                if saved {
+                                    model.removeHoroscope(horoscope: horoscope!)
+                                    saved.toggle()
+                                }else{
+                                    model.saveHoroscope(horoscope: horoscope!)
+                                    saved.toggle()
+                                }
                             }label: {
                                 if saved {
                                     Image(systemName: "bookmark.fill")

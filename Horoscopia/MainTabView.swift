@@ -16,7 +16,7 @@ struct MainTabView: View {
     @State var showAlert: Bool = false
 
     var body: some View {
-        NavigationStack {
+        NavigationStack{
             TabView(selection: $currentTab) {
                 HoroscopeView(horoscope: model.resultsList["yesterday"]).tag(Tab.yesterday)
                     .tabItem {
