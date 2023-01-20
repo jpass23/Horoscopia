@@ -12,51 +12,51 @@ enum Tab {
 
 struct MainTabView: View {
     @EnvironmentObject var model: Model
-    @State var currentTab: Tab = Tab.today
+    @State var currentTab: Tab = .today
     @State var showAlert: Bool = false
-    
+
     var body: some View {
         NavigationStack {
-            TabView(selection: $currentTab){
-                HoroscopeView(horoscope: model.resultsList["yesterday"]!).tag(Tab.yesterday)
+            TabView(selection: $currentTab) {
+                HoroscopeView(horoscope: model.resultsList["yesterday"]).tag(Tab.yesterday)
                     .tabItem {
-                        VStack{
+                        VStack {
                             Image(systemName: "clock.badge.checkmark")
                             Text("Yesterday")
                         }
                     }
-                HoroscopeView(horoscope: model.resultsList["today"]!).tag(Tab.today)
+                HoroscopeView(horoscope: model.resultsList["today"]).tag(Tab.today)
                     .tabItem {
-                        VStack{
+                        VStack {
                             Image(systemName: "clock")
                             Text("Today")
                         }
                     }
-                HoroscopeView(horoscope: model.resultsList["tomorrow"]!).tag(Tab.tomorrow)
+                HoroscopeView(horoscope: model.resultsList["tomorrow"]).tag(Tab.tomorrow)
                     .tabItem {
-                        VStack{
+                        VStack {
                             Image(systemName: "clock.badge.questionmark")
                             Text("Tomorrow")
                         }
                     }
-            }.toolbar{
+            }.toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button{
+                    Button {
                         showAlert.toggle()
-                    }label:{
+                    } label: {
                         Text(model.zodiac ?? "No zodiac").font(.largeTitle).fontWeight(.bold).foregroundColor(.black)
                     }.alert("Switch Zodiac?", isPresented: $showAlert) {
-                        Button("Yes"){
+                        Button("Yes") {
                             model.signOut()
                             model.zodiac = nil
                         }
-                        Button("Cancel", role: .cancel){}
+                        Button("Cancel", role: .cancel) {}
                     }
                 }
                 ToolbarItem {
-                    NavigationLink{
+                    NavigationLink {
                         SavedView()
-                    }label: {
+                    } label: {
                         Image(systemName: "bookmark.square")
                     }
                 }
@@ -65,8 +65,8 @@ struct MainTabView: View {
     }
 }
 
-//struct MainTabView_Previews: PreviewProvider {
+// struct MainTabView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MainTabView()
 //    }
-//}
+// }

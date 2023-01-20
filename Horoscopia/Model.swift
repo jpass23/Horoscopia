@@ -23,23 +23,24 @@ class Model: ObservableObject {
     @Published var zodiac = UserDefaults.standard.string(forKey: "zodiac")
     var savedList = [Result]()
     var resultsList = [String: Result]()
+    let colorList: [String: Int] = ["Red":0xA91B0D, "Orange":0xFF7A00, "Yellow":0xFFD500, "Green":0x3ED104, "Spring Green":0xA2E340, "Blue":0x1E8BF7, "Navy Blue":0x000080, "Teal":0x008080, "Purple":0x8B07F7, "Pink":0xF699CD, "Rose Pink":0xFC94AF, "Orchid": 0xDA70D6, "Brown":0x964B00, "Copper":0xB87333, "Silver":0xC0C0C0, "Gold":0xD4AF37]
     
-    init(){
-        if UserDefaults.standard.bool(forKey: "signedIn"){
-            let zodiac = UserDefaults.standard.string(forKey: "zodiac")!
-            apiRequest(sign: zodiac, day: "yesterday")
-            apiRequest(sign: zodiac, day: "today")
-            apiRequest(sign: zodiac, day: "tomorrow")
-        }
-    }
+//    init(){
+//        if UserDefaults.standard.bool(forKey: "signedIn"){
+//            let zodiac = UserDefaults.standard.string(forKey: "zodiac")!
+//            apiRequest(sign: zodiac, day: "yesterday")
+//            apiRequest(sign: zodiac, day: "today")
+//            apiRequest(sign: zodiac, day: "tomorrow")
+//        }
+//    }
     
     func signIn(){
-        UserDefaults.standard.set(true, forKey: "signedIn")
+        //UserDefaults.standard.set(true, forKey: "signedIn")
         signedIn = true
     }
     
     func signOut(){
-        UserDefaults.standard.set(false, forKey: "signedIn")
+        //UserDefaults.standard.set(false, forKey: "signedIn")
         signedIn = false
         resultsList = [String: Result]()
     }

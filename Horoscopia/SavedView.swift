@@ -10,15 +10,15 @@ import SwiftUI
 struct SavedView: View {
     @EnvironmentObject var model: Model
     var body: some View {
-//        List {
-//            ForEach(model.savedList, id: \.self) {horoscope in
-//                NavigationLink{
-//                    HoroscopeView()
-//                }label:{
-//                    Text(horoscope.current_date)
-//                }
-//            }
-//        }.navigationTitle("Saved Horoscopes")
+        List {
+            ForEach(model.savedList, id: \.self) {horoscope in
+                NavigationLink{
+                    HoroscopeView(saved: true, horoscope: horoscope)
+                }label:{
+                    Text(horoscope.current_date)
+                }
+            }
+        }.navigationTitle("Saved Horoscopes")
         Text("Hey")
     }
 }

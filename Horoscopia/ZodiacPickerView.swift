@@ -12,8 +12,8 @@ struct ZodiacPickerView: View {
     @State var zodiac = String()
     @State var birthday = Date()
     @State var showAlert = false
-    
-    let zodiacList = ["No Zodiac", "Aries","Taurus","Gemini","Cancer","Leo","Virgo", "Libra", "Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"]
+
+    let zodiacList = ["No Zodiac", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
     var body: some View {
         VStack {
             Spacer()
@@ -22,32 +22,31 @@ struct ZodiacPickerView: View {
             Text("Select your zodiac sign:").font(.title)
 
             Picker("ZodiacPicker", selection: $zodiac) {
-                ForEach(zodiacList, id: \.self){zodiac in
+                ForEach(zodiacList, id: \.self) { zodiac in
                     Text(zodiac).tag(zodiac)
                 }
             }.pickerStyle(.menu)
-            
+
             Spacer()
 
-            Button{
-                if model.zodiac == nil{
+            Button {
+                if model.zodiac == nil {
                     showAlert.toggle()
-                }else{
+                } else {
                     model.signIn()
                 }
-            }label: {
+            } label: {
                 buttonView
             }.alert("Please choose a zodiac sign", isPresented: $showAlert) {
-                Button("Cancel", role: .cancel){}
-            }.onChange(of: zodiac) { newValue in
+                Button("Cancel", role: .cancel) {}
+            }.onChange(of: zodiac) { _ in
                 model.setZodoac(zodiac: zodiac)
             }
             Spacer()
         }
         .padding()
-        
     }
-    
+
     var buttonView: some View {
         ZStack {
             Rectangle().frame(width: 200, height: 80).cornerRadius(8)
