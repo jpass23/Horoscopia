@@ -18,21 +18,21 @@ struct MainTabView: View {
     var body: some View {
         NavigationStack {
             TabView(selection: $currentTab){
-                HoroscopeView(day: "yesterday").tag(Tab.yesterday)
+                HoroscopeView(horoscope: model.resultsList["yesterday"]!).tag(Tab.yesterday)
                     .tabItem {
                         VStack{
                             Image(systemName: "clock.badge.checkmark")
                             Text("Yesterday")
                         }
                     }
-                HoroscopeView(day: "today").tag(Tab.today)
+                HoroscopeView(horoscope: model.resultsList["today"]!).tag(Tab.today)
                     .tabItem {
                         VStack{
                             Image(systemName: "clock")
                             Text("Today")
                         }
                     }
-                HoroscopeView(day: "tomorrow").tag(Tab.tomorrow)
+                HoroscopeView(horoscope: model.resultsList["tomorrow"]!).tag(Tab.tomorrow)
                     .tabItem {
                         VStack{
                             Image(systemName: "clock.badge.questionmark")

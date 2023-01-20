@@ -22,6 +22,11 @@ struct ContentView: View {
     }
 }
 
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

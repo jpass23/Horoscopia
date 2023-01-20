@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C05126422979FF2100A13F33 /* HoroscopeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05126412979FF2100A13F33 /* HoroscopeViewModel.swift */; };
 		C0514BB02978FD7100795F8F /* HoroscopiaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0514BAF2978FD7100795F8F /* HoroscopiaApp.swift */; };
 		C0514BB22978FD7100795F8F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0514BB12978FD7100795F8F /* ContentView.swift */; };
 		C0514BB42978FD7400795F8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0514BB32978FD7400795F8F /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C05126412979FF2100A13F33 /* HoroscopeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeViewModel.swift; sourceTree = "<group>"; };
 		C0514BAC2978FD7100795F8F /* Horoscopia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Horoscopia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0514BAF2978FD7100795F8F /* HoroscopiaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopiaApp.swift; sourceTree = "<group>"; };
 		C0514BB12978FD7100795F8F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				C0514BAF2978FD7100795F8F /* HoroscopiaApp.swift */,
 				C0514BB12978FD7100795F8F /* ContentView.swift */,
 				C0514BBD2978FF3800795F8F /* ZodiacPickerView.swift */,
+				C05126412979FF2100A13F33 /* HoroscopeViewModel.swift */,
 				C0514BBF297908CC00795F8F /* MainTabView.swift */,
 				C0514BC129790A2300795F8F /* HoroscopeView.swift */,
 				C0514BC529799FFC00795F8F /* Model.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0514BC629799FFC00795F8F /* Model.swift in Sources */,
+				C05126422979FF2100A13F33 /* HoroscopeViewModel.swift in Sources */,
 				C0514BB22978FD7100795F8F /* ContentView.swift in Sources */,
 				C0514BC229790A2300795F8F /* HoroscopeView.swift in Sources */,
 				C0514BC429799BFD00795F8F /* SavedView.swift in Sources */,

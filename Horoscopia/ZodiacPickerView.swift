@@ -13,7 +13,7 @@ struct ZodiacPickerView: View {
     @State var birthday = Date()
     @State var showAlert = false
     
-    let zodiacList = ["No Zodiac", "Ares","Taurus","Gemini","Cancer","Leo","Virgo", "Libra", "Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"]
+    let zodiacList = ["No Zodiac", "Aries","Taurus","Gemini","Cancer","Leo","Virgo", "Libra", "Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"]
     var body: some View {
         VStack {
             Spacer()
@@ -28,9 +28,7 @@ struct ZodiacPickerView: View {
             }.pickerStyle(.menu)
             
             Spacer()
-//            HStack{
-//                DatePicker("Enter your birthday: ", selection: $birthday, displayedComponents: .date)
-//            }
+
             Button{
                 if model.zodiac == nil{
                     showAlert.toggle()
