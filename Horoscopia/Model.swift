@@ -55,11 +55,13 @@ class Model: ObservableObject {
     
     func saveHoroscope(horoscope: Result){
         savedList.append(horoscope)
+        //UserDefaults.standard.set(horoscope, forKey: "savedList")
     }
     
     func removeHoroscope(horoscope: Result){
         if let index = savedList.firstIndex(of: horoscope){
             savedList.remove(at: index)
+            //UserDefaults.standard.set(horoscope, forKey: "savedList")
         }
     }
     
