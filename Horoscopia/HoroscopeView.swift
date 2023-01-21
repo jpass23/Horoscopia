@@ -11,37 +11,37 @@ struct HoroscopeView: View {
     @EnvironmentObject var model: Model
     @State var saved: Bool
     let horoscope: Result
-    
+
     init(saved: Bool = false, horoscope: Result) {
         self.saved = saved
         self.horoscope = horoscope
     }
-    
+
     var body: some View {
-        ScrollView{
-            ZStack{
+        ScrollView {
+            ZStack {
                 gradientRect
-                VStack(spacing: 50){
-                    HStack(spacing: 20){
+                VStack(spacing: 50) {
+                    HStack(spacing: 20) {
                         Text(horoscope.current_date).font(.title).fontWeight(.bold)
                         Spacer()
-                        Button{
+                        Button {
                             if saved {
                                 model.removeHoroscope(horoscope: horoscope)
                                 saved.toggle()
-                            }else{
+                            } else {
                                 model.saveHoroscope(horoscope: horoscope)
                                 saved.toggle()
                             }
-                        }label: {
+                        } label: {
                             if saved {
                                 Image(systemName: "bookmark.fill")
-                            }else{
+                            } else {
                                 Image(systemName: "bookmark")
                             }
                         }
                     }
-                    Section{
+                    Section {
                         Text("Horoscope: ").fontWeight(.bold) + Text(horoscope.description)
                         Text("Compatibility: ").fontWeight(.bold) + Text(horoscope.compatibility)
                         Text("Mood: ").fontWeight(.bold) + Text(horoscope.mood)
@@ -51,17 +51,17 @@ struct HoroscopeView: View {
                     }
                     Spacer()
                 }.padding()
-            } //ZStack
-        } //Scrollview
+            } // ZStack
+        } // Scrollview
     }
-    
-    var gradientRect: some View{
-        Rectangle().frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).foregroundColor(.clear).background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex:model.colorList[horoscope.color] ?? 0xFFFFFF)]), startPoint: .top, endPoint: .bottom))
+
+    var gradientRect: some View {
+        Rectangle().frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).foregroundColor(.clear).background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: model.colorList[horoscope.color] ?? 0xFFFFFF)]), startPoint: .top, endPoint: .bottom))
     }
 }
 
-//struct HoroscopeView_Previews: PreviewProvider {
+// struct HoroscopeView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        HoroscopeView()
 //    }
-//}
+// }

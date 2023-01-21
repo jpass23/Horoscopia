@@ -17,9 +17,9 @@ struct MainTabView: View {
 
     var body: some View {
         NavigationStack {
-            if model.resultsList["today"] == nil{
+            if model.resultsList["today"] == nil {
                 Text("Loading...")
-            }else{
+            } else {
                 TabView(selection: $currentTab) {
                     HoroscopeView(horoscope: model.resultsList["yesterday"]!).tag(Tab.yesterday)
                         .tabItem {

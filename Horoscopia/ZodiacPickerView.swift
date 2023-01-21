@@ -10,7 +10,6 @@ import SwiftUI
 struct ZodiacPickerView: View {
     @EnvironmentObject var model: Model
     @State var zodiac = String()
-    @State var birthday = Date()
     @State var showAlert = false
 
     let zodiacList = ["No Zodiac", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"]
@@ -45,6 +44,15 @@ struct ZodiacPickerView: View {
             Spacer()
         }
         .padding()
+        .toolbar{
+            ToolbarItem{
+                NavigationLink {
+                    SavedView()
+                } label: {
+                    Image(systemName: "bookmark.square")
+                }
+            }
+        }
     }
 
     var buttonView: some View {

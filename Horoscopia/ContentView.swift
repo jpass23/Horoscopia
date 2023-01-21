@@ -15,7 +15,7 @@ struct ContentView: View {
             if model.signedIn {
                 MainTabView()
             } else {
-                NavigationStack{
+                NavigationStack {
                     ZodiacPickerView()
                 }
             }
