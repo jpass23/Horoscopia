@@ -16,7 +16,7 @@ struct SavedView: View {
                 NavigationLink {
                     HoroscopeView(saved: true, horoscope: horoscope)
                 } label: {
-                    Text(horoscope.current_date)
+                    Text(horoscope.zodiac).fontWeight(.bold) + Text(": ") + Text(horoscope.horoscope.current_date)
                 }
             }
         }.navigationTitle("Saved Horoscopes")

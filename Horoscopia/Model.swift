@@ -7,6 +7,26 @@
 
 import Foundation
 
+struct Horoscope: Hashable, Codable {
+    let horoscope: Result
+    let zodiac: String
+    var isSaved: Bool
+    
+    init(horoscope: Result, zodiac: String, isSaved: Bool = false) {
+        self.horoscope = horoscope
+        self.zodiac = zodiac
+        self.isSaved = isSaved
+    }
+    
+    mutating func save(){
+        self.isSaved = true
+    }
+    
+    mutating func delete(){
+        self.isSaved = false
+    }
+}
+
 struct Result: Codable, Hashable {
     let current_date: String
     let description: String
@@ -19,10 +39,10 @@ struct Result: Codable, Hashable {
 
 class Model: ObservableObject {
     @Published var signedIn = false // UserDefaults.standard.bool(forKey: "signedIn")
-    @Published var zodiac = UserDefaults.standard.string(forKey: "zodiac")
-    @Published var savedList = [Result]()
-    var resultsList = [String: Result]() //make this @Published
-    let colorList: [String: Int] = ["Red": 0xAB1B0D, "Orange": 0xFF7A00, "Yellow": 0xFFD500, "Green": 0x3ED104, "Spring Green": 0xA2E340, "Blue": 0x1E8BF7, "Navy Blue": 0x000080, "Teal": 0x008080, "Purple": 0x8B07F7, "Pink": 0xF699CD, "Rose Pink": 0xFC94AF, "Orchid": 0xDA70D6, "Brown": 0x964B00, "Copper": 0xB87333, "Silver": 0xC0C0C0, "Gold": 0xD4AF37, "Shadow Black": 0x000000]
+    @Published var zodiac: String? //UserDefaults.standard.string(forKey: "zodiac")
+    @Published var savedList = [Horoscope]()
+    var resultsList = [String: Horoscope]() //make this @Published
+    let colorList: [String: Int] = ["Red": 0xB90E0A, "Orange": 0xFF7A00, "Yellow": 0xFFD500, "Green": 0x3ED104, "Spring Green": 0xA2E340, "Blue": 0x1E8BF7, "Navy Blue": 0x000080, "Teal": 0x008080, "Purple": 0x8B07F7, "Pink": 0xF699CD, "Rose Pink": 0xFC94AF, "Orchid": 0xDA70D6, "Brown": 0x964B00, "Copper": 0xB87333, "Silver": 0xC0C0C0, "Gold": 0xD4AF37, "Shadow Black": 0x000000]
     
     //    init(){
     //        if UserDefaults.standard.bool(forKey: "signedIn"){
@@ -42,7 +62,7 @@ class Model: ObservableObject {
         // UserDefaults.standard.set(false, forKey: "signedIn")
         UserDefaults.standard.set(nil, forKey: "zodiac")
         signedIn = false
-        resultsList = [String: Result]()
+        resultsList = [String: Horoscope]()
     }
     
     func setZodoac(zodiac: String) {
@@ -53,16 +73,15 @@ class Model: ObservableObject {
         apiRequest(sign: zodiac, day: "tomorrow")
     }
     
-    func saveHoroscope(horoscope: Result) {
+    func saveHoroscope(horoscope: Horoscope) {
         savedList.append(horoscope)
         let localList = savedList
         if let encodedList = try? JSONEncoder().encode(localList) {
-            print("Yo")
             UserDefaults.standard.set(encodedList, forKey: "savedList")
         }
     }
     
-    func removeHoroscope(horoscope: Result) {
+    func removeHoroscope(horoscope: Horoscope) {
         if let index = savedList.firstIndex(of: horoscope) {
             savedList.remove(at: index)
             let localList = savedList
@@ -74,7 +93,7 @@ class Model: ObservableObject {
     
     func getListFromDefaults() {
         if let localList = UserDefaults.standard.object(forKey: "savedList") as? Data {
-            if let decodedList = try? JSONDecoder().decode([Result].self, from: localList) {
+            if let decodedList = try? JSONDecoder().decode([Horoscope].self, from: localList) {
                 savedList = decodedList
             }
         }
@@ -99,7 +118,8 @@ class Model: ObservableObject {
             do {
                 let JSONData = response.data(using: .utf8)!
                 let decoded = try JSONDecoder().decode(Result.self, from: JSONData)
-                self.resultsList.updateValue(decoded, forKey: day)
+                let decodedHoroscope = Horoscope(horoscope: decoded, zodiac: self.zodiac ?? "")
+                self.resultsList.updateValue(decodedHoroscope, forKey: day)
             } catch {
                 print(error)
             }

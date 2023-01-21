@@ -10,9 +10,9 @@ import SwiftUI
 struct HoroscopeView: View {
     @EnvironmentObject var model: Model
     @State var saved: Bool
-    let horoscope: Result
+   let horoscope: Horoscope
 
-    init(saved: Bool = false, horoscope: Result) {
+    init(saved: Bool = false, horoscope: Horoscope) {
         self.saved = saved
         self.horoscope = horoscope
     }
@@ -23,7 +23,7 @@ struct HoroscopeView: View {
                 gradientRect
                 VStack(spacing: 50) {
                     HStack(spacing: 20) {
-                        Text(horoscope.current_date).font(.title).fontWeight(.bold)
+                        Text(horoscope.horoscope.current_date).font(.title).fontWeight(.bold)
                         Spacer()
                         Button {
                             if saved {
@@ -42,21 +42,22 @@ struct HoroscopeView: View {
                         }
                     }
                     Section {
-                        Text("Horoscope: ").fontWeight(.bold) + Text(horoscope.description)
-                        Text("Compatibility: ").fontWeight(.bold) + Text(horoscope.compatibility)
-                        Text("Mood: ").fontWeight(.bold) + Text(horoscope.mood)
-                        Text("Lucky Number: ").fontWeight(.bold) + Text(horoscope.lucky_number)
-                        Text("Lucky Time: ").fontWeight(.bold) + Text(horoscope.lucky_time)
-                        Text("Color: ").fontWeight(.bold) + Text(horoscope.color)
+                        Text("Horoscope: ").fontWeight(.bold) + Text(horoscope.horoscope.description)
+                        Text("Compatibility: ").fontWeight(.bold) + Text(horoscope.horoscope.compatibility)
+                        Text("Mood: ").fontWeight(.bold) + Text(horoscope.horoscope.mood)
+                        Text("Lucky Number: ").fontWeight(.bold) + Text(horoscope.horoscope.lucky_number)
+                        Text("Lucky Time: ").fontWeight(.bold) + Text(horoscope.horoscope.lucky_time)
+                        Text("Color: ").fontWeight(.bold) + Text(horoscope.horoscope.color)
                     }
                     Spacer()
                 }.padding()
+                    
             } // ZStack
         } // Scrollview
     }
 
     var gradientRect: some View {
-        Rectangle().frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).foregroundColor(.clear).background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBackground), Color(hex: model.colorList[horoscope.color] ?? 0xFFFFFF)]), startPoint: .top, endPoint: .bottom))
+        Rectangle().frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).foregroundColor(.clear).background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBackground), Color(hex: model.colorList[horoscope.horoscope.color] ?? 0xFFFFFF)]), startPoint: .top, endPoint: .bottom))
     }
 }
 
