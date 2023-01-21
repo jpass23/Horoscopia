@@ -10,7 +10,7 @@ import SwiftUI
 struct HoroscopeView: View {
     @EnvironmentObject var model: Model
     @State var saved: Bool
-   let horoscope: Horoscope
+    let horoscope: Horoscope
 
     init(saved: Bool = false, horoscope: Horoscope) {
         self.saved = saved
@@ -51,7 +51,6 @@ struct HoroscopeView: View {
                     }
                     Spacer()
                 }.padding()
-                    
             } // ZStack
         } // Scrollview
     }
