@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 enum Tab {
     case yesterday, today, tomorrow
 }
@@ -18,7 +19,14 @@ struct MainTabView: View {
     var body: some View {
         NavigationStack {
             if model.resultsList["today"] == nil {
-                Text("Loading...")
+                VStack {
+                    Spacer()
+                    Text("Loading...")
+                    Spacer()
+                    Button("Cancel") {
+                        model.signOut()
+                    }
+                }
             } else {
                 TabView(selection: $currentTab) {
                     HoroscopeView(horoscope: model.resultsList["yesterday"]!).tag(Tab.yesterday)

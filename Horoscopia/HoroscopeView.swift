@@ -56,7 +56,7 @@ struct HoroscopeView: View {
     }
 
     var gradientRect: some View {
-        Rectangle().frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).foregroundColor(.clear).background(LinearGradient(gradient: Gradient(colors: [.white, Color(hex: model.colorList[horoscope.color] ?? 0xFFFFFF)]), startPoint: .top, endPoint: .bottom))
+        Rectangle().frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight).foregroundColor(.clear).background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBackground), Color(hex: model.colorList[horoscope.color] ?? 0xFFFFFF)]), startPoint: .top, endPoint: .bottom))
     }
 }
 

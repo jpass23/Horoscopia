@@ -20,6 +20,9 @@ struct ContentView: View {
                 }
             }
         }.environmentObject(model)
+            .onAppear {
+                model.getListFromDefaults()
+            }
     }
 }
 

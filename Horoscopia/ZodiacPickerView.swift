@@ -44,8 +44,8 @@ struct ZodiacPickerView: View {
             Spacer()
         }
         .padding()
-        .toolbar{
-            ToolbarItem{
+        .toolbar {
+            ToolbarItem {
                 NavigationLink {
                     SavedView()
                 } label: {
