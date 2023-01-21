@@ -38,8 +38,12 @@ struct ZodiacPickerView: View {
                 buttonView
             }.alert("Please choose a zodiac sign", isPresented: $showAlert) {
                 Button("Cancel", role: .cancel) {}
-            }.onChange(of: zodiac) { _ in
-                model.setZodoac(zodiac: zodiac)
+            }.onChange(of: zodiac) { zodiac in
+                if zodiac == "No Zodiac"{
+                    showAlert = true
+                }else{
+                    model.setZodoac(zodiac: zodiac)
+                }
             }
             Spacer()
         }
